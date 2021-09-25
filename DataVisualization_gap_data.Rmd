@@ -1,0 +1,37 @@
+---
+title: "Untitled"
+author: "Yizhou Liu"
+date: "9/25/2021"
+output: pdf_document
+---
+
+
+
+
+```{r setup, include=FALSE}
+install.packages("gapminder")
+```
+
+```{r}
+install.packages("dplyr")
+install.packages("tidyverse")
+```
+
+```{r setup, include=FALSE}
+library(gapminder)
+head(gapminder_unfiltered)
+
+unique(gapminder_unfiltered$year)
+
+library(dplyr)
+library(tidyverse)
+gap_data <- gapminder_unfiltered%>%filter(year==2000)
+```
+
+```{r}
+p <- ggplot(gap_data, aes(gdpPercap, lifeExp))
+p + geom_point(aes(colour = factor(continent), size = pop)) + scale_x_log10() 
+```
+
+
+
